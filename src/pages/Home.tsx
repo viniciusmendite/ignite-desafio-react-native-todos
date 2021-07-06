@@ -26,7 +26,19 @@ export function Home() {
   }
 
   function handleMarkTaskAsDone(id: number) {
-    //TODO - mark task as done if exists
+    const newTasks = tasks.map(task => {
+      if (task.id === id) {
+        return {
+          id: task.id,
+          title: task.title,
+          done: !task.done
+        }
+      } else {
+        return task
+      }
+    })
+
+    setTasks([...newTasks])
   }
 
   function handleRemoveTask(id: number) {
